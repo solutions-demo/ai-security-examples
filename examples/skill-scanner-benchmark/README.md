@@ -1,6 +1,6 @@
 # AI Skill Scanner Benchmark
 
-*Part of [AI Security Examples](../README.md).*
+*Part of [AI Security Examples](../../README.md).*
 
 A set of purpose-built agent skills for trying out the JFrog AI Security skill scanner during a trial or
 proof of concept. Each skill is a single test case: one specific attack technique, in a neutral wrapper,
