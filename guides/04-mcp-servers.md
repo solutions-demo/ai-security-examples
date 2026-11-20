@@ -1,4 +1,4 @@
-# 4. MCP servers
+# 4. MCP server governance
 
 MCP servers give coding agents new tools: a browser, your issue tracker, your database. Each one can
 read data and take actions with the developer's permissions. In this guide you put them under governance.
@@ -117,4 +117,4 @@ See also: [MCP Registry overview](https://docs.jfrog.com/ai-ml/docs/mcp-registry
 
 ---
 
-**Previous:** [← 3. Access and authentication](03-access-and-auth.md) · **Next:** [5. Agent skills →](05-agent-skills.md)
+**Previous:** [← 3. Access and authentication](03-access-and-auth.md) · **Next:** [5. Agent skill governance →](05-agent-skills.md)

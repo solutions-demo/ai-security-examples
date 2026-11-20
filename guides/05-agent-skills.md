@@ -1,4 +1,4 @@
-# 5. Agent skills
+# 5. Agent skill governance
 
 A skill is a bundle of instructions, and often scripts, that a coding agent loads and follows with the
 developer's permissions. That makes skills an easy place to hide prompt injection, credential theft or a
@@ -168,4 +168,4 @@ See also: [Skills Registry](https://docs.jfrog.com/ai-ml/docs/skills-registry) �
 
 ---
 
-**Previous:** [← 4. MCP servers](04-mcp-servers.md) · **Next:** [6. Governed AI models →](06-governed-models.md)
+**Previous:** [← 4. MCP server governance](04-mcp-servers.md) · **Next:** [6. Package model governance →](06-governed-models.md)

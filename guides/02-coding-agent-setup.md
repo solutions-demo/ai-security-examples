@@ -1,7 +1,9 @@
 # 2. Coding agent setup
 
-Push the JFrog plugin to the developer's coding agent and restrict the agent to MCP servers approved in
-JFrog.
+The JFrog plugin is where JFrog AI Security governance starts on the developer's machine. It installs Agent
+Guard, which checks skills before they run and proxies every MCP server, so every later guide depends on
+it. In this guide you push the plugin to the coding agent and lock the agent down to MCP servers approved
+in JFrog.
 
 > [!NOTE]
 > For a POC, you apply this configuration in your own user settings. In production, the same configuration

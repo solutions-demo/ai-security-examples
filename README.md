@@ -1,4 +1,4 @@
-# AI Security Examples
+# JFrog AI Security Examples
 
 Guides and ready-made examples for evaluating JFrog AI Security in a trial or proof of concept: governing
 the MCP servers, agent skills and AI models your developers' coding agents use.
@@ -26,22 +26,22 @@ ai-security-examples/
 
 Each guide builds on the previous ones.
 
-| # | Guide | What you'll show |
-|---|-------|------------------|
-| 1 | [Prerequisites](guides/01-prerequisites.md) | The platform is ready for AI Security |
-| 2 | [Coding agent setup](guides/02-coding-agent-setup.md) | The JFrog plugin on the developer's agent, restricted to approved MCP servers |
-| 3 | [Access and authentication](guides/03-access-and-auth.md) | A scoped developer user, connected through the JFrog CLI and verified from the agent |
-| 4 | [MCP servers](guides/04-mcp-servers.md) | MCP servers registered, restricted by tool policy, and installed from the agent |
-| 5 | [Agent skills](guides/05-agent-skills.md) | Skills scanned, published, tested against the benchmark, and governed by policy |
-| 6 | [Governed AI models](guides/06-governed-models.md) | Shadow models detected, blocked, and brought under governance |
+| Guide | Description |
+|-------|-------------|
+| [1. Prerequisites](guides/01-prerequisites.md) | What you need before testing JFrog AI Security: a dedicated JFrog Project, AI scanning, Curation and the AI Addendum, plus the Skills enforcement preview and the MCP Registry. |
+| [2. Coding agent setup](guides/02-coding-agent-setup.md) | Installing the JFrog plugin in each supported coding assistant (VS Code, Claude Code, Cursor), the base of all agent-side governance, and limiting the assistant to MCP servers approved in JFrog. |
+| [3. Access and authentication](guides/03-access-and-auth.md) | Creating a developer user with project roles only, connecting the JFrog CLI with it, and checking from the assistant that everything is wired up. |
+| [4. MCP server governance](guides/04-mcp-servers.md) | Governing MCP servers: adding one from the Marketplace, restricting its tools with allow and block lists, and registering a remote server you already use, with OAuth or a token header. |
+| [5. Agent skill governance](guides/05-agent-skills.md) | Securing agent skills: scanning before a skill runs, publishing to the Skills Registry, testing the scanner with the benchmark, and policies that block malicious skills or allow only approved ones. |
+| [6. Package model governance](guides/06-governed-models.md) | Governing package models, such as those from Hugging Face: finding shadow models, blocking them, catching a malicious model and one hidden in a container image, and building an approved model list per project. |
 
 **Coming soon:** agent plugins, and APM (Agent Package Manager) with Artifactory.
 
 ## Examples
 
-| Example | Use it to |
-|---------|-----------|
-| [Skill Scanner Benchmark](examples/skill-scanner-benchmark/README.md) | Test the skill scanner against 14 skills, each built around one specific attack technique |
+| Example | Description |
+|---------|-------------|
+| [Skill Scanner Benchmark](examples/skill-scanner-benchmark/README.md) | 14 purpose-built skills, each using one attack technique, to test what the skill scanner catches. |
 
 ## Help and feedback
 

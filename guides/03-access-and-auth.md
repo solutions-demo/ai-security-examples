@@ -46,9 +46,9 @@ In your coding agent, run:
 /jfrog:jfrog-init
 ```
 
-Follow the prompts. The skill checks your CLI setup, server reachability, project binding and AI Security
+Follow the prompts. The skill checks your CLI setup, server reachability, project binding and JFrog AI Security
 entitlement, and walks you through anything that's missing.
 
 ---
 
-**Previous:** [← 2. Coding agent setup](02-coding-agent-setup.md) · **Next:** [4. MCP servers →](04-mcp-servers.md)
+**Previous:** [← 2. Coding agent setup](02-coding-agent-setup.md) · **Next:** [4. MCP server governance →](04-mcp-servers.md)
