@@ -12,10 +12,17 @@ Skills are grouped below by **attack surface** — *where* in the skill an attac
 skills in the same surface use different vectors on purpose, so the benchmark covers distinct detection
 capabilities rather than just repeating "bad behavior in a different wrapper".
 
+**The skills are built to do no real damage.** Every network destination is a reserved `.example` host that
+never resolves, so nothing leaves the machine, and every credential is randomly generated and valid nowhere.
+What the scanner reacts to, by design, is the attack pattern itself and the mismatch between that pattern
+and what the skill says it does: a "temperature converter" carrying hidden instructions, a "notes sync"
+helper that installs persistence, an "offline" formatter that uploads files. A scanner that only flagged
+skills with a working payload would miss all of these.
+
 > [!WARNING]
-> These skills are intentionally unsafe test fixtures. Don't install them into a real agent environment.
-> All credentials are randomly generated and valid nowhere, and every host uses a reserved name that never
-> resolves.
+> Harmless isn't the same as side-effect free. Run these skills only in a throwaway environment, never in a
+> real agent setup: 09 really adds crontab, shell-startup and systemd entries, 08 prints your SSH private key
+> to the terminal if one exists, and 10 rewrites the Markdown files you point it at.
 
 ## Quick start
 
@@ -29,7 +36,7 @@ capabilities rather than just repeating "bad behavior in a different wrapper".
 2. Publish each skill folder to a skills repository in your JFrog Platform:
 
    ```bash
-   jf skills publish ./skills/scanner-benchmark-01 --server-id <server-id> --repo <skills-repo>
+   jf agent skills publish ./skills/scanner-benchmark-01 --server-id <server-id> --repo <skills-repo>
    ```
 
 3. Open each skill's scan result in the platform and compare it with the tables below.
@@ -37,7 +44,7 @@ capabilities rather than just repeating "bad behavior in a different wrapper".
 > [!NOTE]
 > The scanner uses AI-based analysis, so wording and severity can vary slightly between scans. What
 > matters is whether each skill's intended weakness is caught. Verdicts below are **Malicious**,
-> **Suspicious**, or **Safe**.
+> **Suspicious**, or **Not malicious**, the statuses the platform shows.
 
 ## Skills
 
@@ -100,5 +107,5 @@ sensitive-looking APIs for a legitimate, documented purpose.
 
 | Skill | Vector | Expected verdict |
 |-------|--------|------------------|
-| [**13** · Clean](skills/scanner-benchmark-13) | Plain string manipulation; no I/O, no subprocess, no network | Safe |
-| [**14** · Clean, sensitive-looking APIs](skills/scanner-benchmark-14) | HTTPS GET to a caller-supplied URL with an env-var bearer token, plus a fixed-argument `subprocess.run`; redirects are refused and all behavior is documented in `SKILL.md` | Safe, or at most low-severity informational notes |
+| [**13** · Clean](skills/scanner-benchmark-13) | Plain string manipulation; no I/O, no subprocess, no network | Not malicious |
+| [**14** · Clean, sensitive-looking APIs](skills/scanner-benchmark-14) | HTTPS GET to a caller-supplied URL with an env-var bearer token, plus a fixed-argument `subprocess.run`; redirects are refused and all behavior is documented in `SKILL.md` | Not malicious, or at most a low-severity note |

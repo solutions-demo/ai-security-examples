@@ -59,8 +59,10 @@ Some policies to try on Chrome DevTools:
 | Block running arbitrary code and uploading local files | Block | `^(evaluate_script\|upload_file)$` | Everything else still works |
 | Read-only browsing | Allow | `^(navigate_page\|list_.*\|get_.*\|take_.*)$` | The agent can open pages, read console and network logs and take screenshots, but can't type, click or run scripts |
 
-Then check the policy from your agent. With the block list in place, ask *"Run `document.title` as
-JavaScript on the current page"*: the agent can't. Ask for a screenshot: it still works.
+Then check the policy from your agent. Blocked tools aren't refused at call time: Agent Guard hides them,
+so the agent never sees them at all. With the block list in place, ask *"Which Chrome DevTools tools do
+you have?"*: `evaluate_script` and `upload_file` are missing. Ask it to run JavaScript on the page: it has
+no tool for that. Ask for a screenshot: it still works.
 
 > [!TIP]
 > Patterns use RE2 syntax. Anchor them with `^` and `$`: a loose pattern like `get` also matches any tool
