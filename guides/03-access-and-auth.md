@@ -29,11 +29,14 @@ JFrog plugin installs the CLI during initialization. Then add your server:
 jf config add --interactive
 ```
 
-- **Server ID:** use the same name you used for `<YOUR-SERVER>` in the
-  [coding agent setup](02-coding-agent-setup.md), your SaaS prefix (for `mycompany.jfrog.io`, use
-  `mycompany`).
+- **Server ID:** your SaaS prefix (for `mycompany.jfrog.io`, use `mycompany`).
 - **URL:** the full URL of your instance.
 - **Authentication:** choose **Access Token** and paste the token from the previous step.
+
+> [!IMPORTANT]
+> The server ID must exactly match the one in the settings you pushed in
+> [coding agent setup](02-coding-agent-setup.md) (`<YOUR-SERVER>`). If they differ, the agent won't
+> recognize the MCP servers as allowed.
 
 ## Verify from your coding agent
 
