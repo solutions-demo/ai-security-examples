@@ -18,7 +18,7 @@ Pick the section for your agent.
 
 Requires VS Code 1.133 or later.
 
-1. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> and run **Preferences: Open User Settings (JSON)**.
+1. Press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> and run **Preferences: Open User Settings (JSON)**.
 2. Add the following at the root of the file. Replace `<YOUR-SERVER>` with your server ID and
    `<your-instance-prefix>` with your instance prefix:
 
