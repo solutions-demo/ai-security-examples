@@ -136,7 +136,9 @@ Blocking deals with one model at a time. The lasting answer is an approved list 
 use vetted models rather than whichever fine-tune they come across. Here you approve `flan-t5-small`
 without blocking the repositories:
 
-1. Associate both shadow repositories with your evaluation project.
+1. Assign both shadow repositories to your evaluation project. For each one, go to **Administration →
+   Repositories**, click the three dots at the right of its row, choose **Project Assignment**, select
+   your project and click **Assign**.
 2. Go to **AI Security → Marketplace → Models** and search for `flan-t5-small`.
 3. Click **Add to Registry**, choose **Allow in project**, select your evaluation project and click
    **Allow**. Then click **View in Registry**.
