@@ -1,103 +1,83 @@
 # 1. Prerequisites
 
-Get the JFrog Platform ready before you start testing. Most of these are one-time steps for an
-administrator, and every later guide assumes they're done.
+Before you test anything, a few things need to be switched on. They happen in three places: with your
+JFrog account team, in MyJFrog, and in the JFrog Platform. Most are one-time steps for an administrator,
+and every later guide assumes they're done.
 
-**Checklist**
-
-- [ ] [Confirm your entitlements with JFrog](#confirm-your-entitlements-with-jfrog)
-- [ ] [Sign the AI Addendum](#sign-the-ai-addendum)
-- [ ] [Enable the Skills enforcement preview](#enable-the-skills-enforcement-preview)
-- [ ] [Turn on Curation](#turn-on-curation)
-- [ ] [Create an evaluation project](#create-an-evaluation-project)
-- [ ] [Enable the MCP Registry](#enable-the-mcp-registry)
-- [ ] [Pick a supported coding agent](#pick-a-supported-coding-agent)
-
-## Confirm your entitlements with JFrog
-
-**Who:** you, with your JFrog account team.
+## With your JFrog account team
 
 Ask your account team to confirm two things on your instance:
 
 - **AI scanning is enabled.** The skill scanner in guide 5 depends on it.
-- **JFrog Curation is active.** JFrog AI Security enforces its decisions through Curation: a blocked model
-  or package is refused at download time by Curation. It's required for the trial, so if it isn't active,
-  ask your customer success manager or account manager to help.
+- **JFrog Curation is active.** JFrog AI Security enforces its decisions through Curation: when a model is
+  blocked, it's Curation that refuses the download. Curation is required for the trial, so if it isn't
+  active, ask your customer success manager or account manager to help.
 
-## Sign the AI Addendum
+## In MyJFrog
 
-**Who:** the MyJFrog Primary Admin. No one else can do this.
+You'll need the MyJFrog **Primary Admin** for the first step, since only they can accept the AI Addendum.
+
+### Accept the AI Addendum
 
 Without it, skills are registered but never scanned.
 
-1. Go to [MyJFrog](https://my.jfrog.com) and open **Settings → AI**.
+1. In [MyJFrog](https://my.jfrog.com), go to **Settings → AI**.
 2. Approve the **AI Addendum**. JFrog AI is now enabled on all your instances.
 
 If **Require JPD level activation** is selected on that page, also click **Ask AI** in the top bar of your
-JFrog Platform and approve JFrog AI there. If the AI settings aren't in MyJFrog, for example on a
-self-hosted instance, ask your JFrog account team how to enable them.
-[Docs](https://docs.jfrog.com/setup/docs/jfrog-ai-assistant)
+JFrog Platform and approve JFrog AI there. If there's no AI page in MyJFrog, for example on a self-hosted
+instance, ask your account team how to enable it.
+See [Enable JFrog AI](https://docs.jfrog.com/setup/docs/jfrog-ai-assistant).
 
-## Enable the Skills enforcement preview
+### Turn on Skills enforcement
 
-**Who:** a MyJFrog admin.
+Skills enforcement is a preview feature. Without it, skill policies exist but never block anything.
 
-Without it, skill policies exist but never block anything.
+1. In MyJFrog, go to **Settings → Preview** and turn on **Enable Preview**.
+2. Accept the Preview Terms of Service and click **Agree and Enable**.
+3. In the list of preview features, turn on **Skills enforcement**.
 
-1. In MyJFrog, go to **Settings → Preview**.
-2. Turn on the **Enable Preview** toggle.
-3. Read the **Preview Terms of Service**, select the checkbox and click **Agree and Enable**.
-4. In the list of preview features, turn on **Skills enforcement**.
+See [JFrog Preview](https://docs.jfrog.com/administration/docs/preview-jfrog-features).
 
-[Docs](https://docs.jfrog.com/administration/docs/preview-jfrog-features)
+## In the JFrog Platform
 
-## Turn on Curation
+These steps need a Platform Admin.
 
-**Who:** a JFrog Platform admin.
+### Turn on Curation
 
-1. In the JFrog Platform, go to **Administration → Curation → General**.
-2. Turn the **Curation** switch on.
+Go to **Administration → Curation → General** and turn the **Curation** switch on. Connecting your
+Hugging Face repositories to it comes later, in [guide 6](06-governed-models.md).
+See [Enable the Curation service](https://docs.jfrog.com/security/docs/general).
 
-That's all for now. Connecting your Hugging Face repositories to Curation is part of
-[guide 6](06-governed-models.md). [Docs](https://docs.jfrog.com/security/docs/general)
+### Enable the MCP Registry
 
-## Create an evaluation project
+Go to **Administration → AI/ML Settings → Coding Assistants**, click **Enable MCP Registry** at the top
+of the page, then **Activate**.
 
-**Who:** a Platform Admin.
+### Create an evaluation project
 
-JFrog AI Security is evaluated inside a JFrog Project: MCP servers, skills and models are allowed per
-project. Create a new project just for the evaluation, even if your organization already uses projects,
-so its policies don't affect anyone else.
+MCP servers, skills and models are all allowed per JFrog Project, so the evaluation happens inside one.
+Create a new project for it, even if your organization already uses projects, so its policies don't
+affect anyone else.
 
-1. In the JFrog Platform, go to **Administration → All Projects** and click **+ Create New**.
+1. Go to **Administration → All Projects** and click **+ Create New**.
 2. Enter a **Project Name** and a **Project Key**, for example `ai-poc`. The key is 2 to 32 lowercase
-   letters, digits and hyphens, and starts with a letter. It's used as a prefix for the project's
-   resources: the skills repository in guide 5, for example, is named `<key>-skills-local`.
+   letters, digits and hyphens, starting with a letter, and it prefixes the project's resources. The
+   skills repository in guide 5, for example, will be `ai-poc-skills-local`.
 3. Under **Project Admins**, add yourself and anyone else running the evaluation.
-4. Leave the other settings as they are and click **Create**.
+4. Leave the rest as it is and click **Create**.
 
-The developer user who tests from a coding agent is added to the project in
-[guide 3](03-access-and-auth.md). [Docs](https://docs.jfrog.com/projects/docs/create-a-project)
+You'll add the developer user to the project in [guide 3](03-access-and-auth.md).
+See [Create a project](https://docs.jfrog.com/projects/docs/create-a-project).
 
-## Enable the MCP Registry
+## What you'll need on your machine
 
-**Who:** a JFrog Platform admin.
+A [supported coding agent](https://docs.jfrog.com/ai-ml/docs/supported-coding-agents-and-deployments):
+VS Code with GitHub Copilot Chat, Claude Code, or Cursor. Guide 2 connects it to JFrog.
 
-1. In the JFrog Platform, go to **Administration → AI/ML Settings → Coding Assistants**.
-2. Click **Enable MCP Registry** at the top of the page, then **Activate**.
-
-## Pick a supported coding agent
-
-**Who:** whoever will test as the developer.
-
-Install one of VS Code with GitHub Copilot Chat, Claude Code, or Cursor. Guide 2 connects it to JFrog.
-See [Supported coding agents and deployments](https://docs.jfrog.com/ai-ml/docs/supported-coding-agents-and-deployments)
-for versions.
-
-> [!NOTE]
-> You don't need to install the JFrog CLI. The JFrog plugin installs it when you initialize the plugin in
-> [guide 3](03-access-and-auth.md). To install it yourself instead, see
-> [JFrog CLI](https://docs.jfrog.com/getting-started/docs/jfrog-cli).
+You don't need to install the JFrog CLI. The JFrog plugin installs it when you initialize the plugin in
+[guide 3](03-access-and-auth.md). To install it yourself instead, see
+[JFrog CLI](https://docs.jfrog.com/getting-started/docs/jfrog-cli).
 
 ---
 
