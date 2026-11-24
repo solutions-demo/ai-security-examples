@@ -59,7 +59,9 @@ project?"* and *"Install the hello-10-languages skill."*
 A harmless skill only shows that the pipeline works. To see what the scanner actually understands, publish
 skills that are malicious in different ways. The
 [Skill Scanner Benchmark](../examples/skill-scanner-benchmark/README.md) has 14 of them, each built around
-one attack technique and given a neutral name, so the scanner has to work it out from the content.
+one attack technique and given a neutral name, so the scanner has to work it out from the content. It
+isn't an exhaustive test of the scanner, but it's a good starting point for seeing the different angles a
+skill can be attacked from.
 
 Start with this set. It covers each place an attack can hide, plus a clean control:
 

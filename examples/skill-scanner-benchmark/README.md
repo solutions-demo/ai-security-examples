@@ -6,6 +6,10 @@ A set of purpose-built agent skills for trying out the JFrog AI Security skill s
 proof of concept. Each skill is a single test case: one specific attack technique, in a neutral wrapper,
 so the scanner has to find the problem in the content rather than being told what to look for.
 
+The set isn't exhaustive. It doesn't cover everything the scanner checks for, or every way a skill can be
+attacked. Treat it as a starting point for understanding the angles an attack can come from, then try
+skills of your own.
+
 Skills are grouped below by **attack surface** — *where* in the skill an attacker would plant something
 (the agent's instructions, the runtime code, the dependency manifest, and so on). Within each group, the
 **Vector** column names the specific technique: the thing a scanner either does or doesn't detect. Two

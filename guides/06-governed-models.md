@@ -14,8 +14,8 @@ cover hosted model APIs such as OpenAI or Gemini.
 > [!IMPORTANT]
 > Before you start, complete [access and authentication](03-access-and-auth.md): the developer user and the
 > JFrog CLI are used throughout. JFrog AI Security enforces model decisions through JFrog Curation, so Curation
-> must be active ([prerequisites](01-prerequisites.md)) and turned on for Hugging Face: **Administration →
-> Curation Settings → General**, turn on **Curation**, then enable it for your Hugging Face repositories.
+> must be active and turned on ([prerequisites](01-prerequisites.md#turn-on-curation)), then enabled for
+> your Hugging Face repositories.
 
 ## How model governance works
 
