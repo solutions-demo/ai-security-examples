@@ -3,7 +3,7 @@
 A skill is a bundle of instructions, and often scripts, that a coding agent loads and follows with the
 developer's permissions. That makes skills an easy place to hide prompt injection, credential theft or a
 malicious install step. In this guide you put skills under governance with the JFrog Skills Registry. You
-see unscanned skills stopped before they run, publish a skill and read its scan verdict, test the scanner
+see a new skill held back until it's scanned, publish a skill and read its scan verdict, test the scanner
 against skills that are malicious in different ways, and control which skills may run with policies.
 
 > [!IMPORTANT]
@@ -31,7 +31,10 @@ from untrusted sources, exfiltration of passwords, tokens and environment variab
 against the agent, installing code from outside approved sources, and references to untrusted third-party
 code.
 
-## Part 1: See an unscanned skill stopped
+## Part 1: Run a new skill and see it scanned before it runs
+
+Any skill JFrog hasn't scanned yet, such as one you just wrote or copied from the internet, is held back
+the first time it's invoked and sent for scanning. Once the scan finds it safe, it runs.
 
 1. Ask your agent to create a simple local skill, for example `hello-10-languages`, which says hello in
    ten languages.
